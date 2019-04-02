@@ -22,13 +22,13 @@ public class Radix{
       System.out.println("Start Loop");
       if (place == 1){
         System.out.println("First Pass");
-        System.out.println("First Pass");
         for (int i = 0; i < data.length; i++){
           System.out.println("Int: "+data[i]);
           if (data[i] >= 0){
             System.out.println("Positive");
             System.out.println(data[i]%10+10);
             buckets[data[i]%10+10].add(data[i]);
+            System.out.println(buckets[data[i]%10+10].toString());
           } else {
             System.out.println("Negative");
             buckets[9+data[i]%10].add(data[i]);
@@ -52,6 +52,7 @@ public class Radix{
         for (int i = 1; i < buckets.length; i++){
           sorting.extend(buckets[i]);
         }
+        System.out.println("Other Pass: "+sorting.toString());
       }
       place *=10;
     }
