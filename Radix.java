@@ -3,13 +3,13 @@ import java.util.*;
 public class Radix{
   public static void radixsort(int[]data){
 
-    int largest = data[0];
+    int longest = data[0];
     for (int i = 1; i < data.length; i++){
-      if (data[i]>largest){
-        largest = data[i];
+      if (Math.abs(data[i])>longest){
+        longest = Math.abs(data[i]);
       }
     }
-    System.out.println("Largest #: "+largest);
+    System.out.println("Largest #: "+longest);
 
     int place = 1;
     MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
@@ -18,7 +18,7 @@ public class Radix{
     }
     MyLinkedList<Integer> sorting = new MyLinkedList();
 
-    while (largest % place != largest){
+    while (longest % place != longest){
       System.out.println("Start Loop");
       if (place == 1){
         System.out.println("First Pass");
@@ -44,6 +44,7 @@ public class Radix{
         for (int i = 0; i < buckets.length; i++){
           buckets[i].clear();
         }
+        System.out.println("start size: " +sorting.size());
         while (sorting.size() != 0){
           System.out.println("start other loop");
           int current = sorting.removeFront();
@@ -56,13 +57,15 @@ public class Radix{
             buckets[9+current/place%10].add(current);
           }
         }
-        sorting = buckets[0];
-        for (int i = 1; i < buckets.length; i++){
+        for (int i = 0; i < buckets.length; i++){
           sorting.extend(buckets[i]);
+          System.out.println("Merging: "+sorting.toString());
+          System.out.println("size: " +sorting.size());
         }
         System.out.println("Other Pass: "+sorting.toString());
         System.out.println("--------------------------------------");
       }
+      System.out.println("end size: " +sorting.size());
       place *=10;
     }
     for (int i = 0; i < data.length; i++){
