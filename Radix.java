@@ -71,6 +71,7 @@ public class Radix{
     for (int i = 0; i < data.length; i++){
       data[i] = sorting.removeFront();
     }
+    System.out.println("sorted array: " +Arrays.toString(data));
 
   }
 
@@ -107,7 +108,7 @@ public class Radix{
     }
     System.out.println();
   }*/
-  int[] data = {103,45,241,861,359,175,920,4};
+  int[] data = {103,45,241,-861,359,-175,920,4};
   radixsort(data);
 }
 
