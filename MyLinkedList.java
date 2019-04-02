@@ -244,7 +244,7 @@ class MyLinkedList<E>{
   }
 
   public static void main(String[]args){
-    MyLinkedList<Integer> test = new MyLinkedList();
+    /*MyLinkedList<Integer> test = new MyLinkedList();
     for (int i = 0; i < 10; i++){
       test.add(i);
     }
@@ -252,7 +252,8 @@ class MyLinkedList<E>{
     for (int i = 0; test.size() != 0; i++){
       test.removeFront();
       System.out.println(test);
-    }
+    }*/
+    System.out.println(920/100%10);
   }
 
 }
