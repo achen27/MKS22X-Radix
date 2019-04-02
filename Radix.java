@@ -26,7 +26,18 @@ public class Radix{
           sorting.extend(buckets[i]);
         }
       } else {
-
+        while (sorting.size() != 0){
+          int current = sorting.removeFront();
+          if (current >= 0){
+            buckets[current*place*10%10+10].add(current);
+          } else {
+            buckets[9+current*place*10%10].add(current);
+          }
+        }
+        sorting = buckets[0];
+        for (int i = 1; i < buckets.length; i++){
+          sorting.extend(buckets[i]);
+        }
       }
       place *=10;
     }
