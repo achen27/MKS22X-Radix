@@ -210,12 +210,18 @@ class MyLinkedList<E>{
   }
 
   public E removeFront(){//remove the 1st element of the list, and return that value
-    E old = start.getData();
-    Node next = start.next();
-    start = next;//changes starting reference
-    start.setPrev(null);//sets prev reference of starting reference to null
-    size--;
-    return old;
+    if (size == 1){
+      E old = start.getData();
+      clear();
+      return old;
+    } else {
+      E old = start.getData();
+      Node next = start.next();
+      start = next;//changes starting reference
+      start.setPrev(null);//sets prev reference of starting reference to null
+      size--;
+      return old;
+    }
   }
 
   public void extend(MyLinkedList other){//combines two lists together
@@ -234,6 +240,18 @@ class MyLinkedList<E>{
       other.size = 0;//other list becomes empty
       other.start = null;
       other.end = null;
+    }
+  }
+
+  public static void main(String[]args){
+    MyLinkedList<Integer> test = new MyLinkedList();
+    for (int i = 0; i < 10; i++){
+      test.add(i);
+    }
+    System.out.println(test);
+    for (int i = 0; test.size() != 0; i++){
+      test.removeFront();
+      System.out.println(test);
     }
   }
 
