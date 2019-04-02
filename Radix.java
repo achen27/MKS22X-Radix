@@ -32,6 +32,7 @@ public class Radix{
           } else {
             System.out.println("Negative");
             buckets[9+data[i]%10].add(data[i]);
+            System.out.println(buckets[9+data[i]%10].toString());
           }
         }
         for (int i = 0; i < buckets.length; i++){
@@ -51,10 +52,12 @@ public class Radix{
           System.out.println(current);
           System.out.println(current/place%10);
           if (current >= 0){
-            buckets[current/place%10].add(current);
+            buckets[current/place%10+10].add(current);
             System.out.println(buckets[current/place%10].toString());
           } else {
+            System.out.println("Negative");
             buckets[9+current/place%10].add(current);
+            System.out.println(buckets[9+current/place%10].toString());
           }
         }
         for (int i = 0; i < buckets.length; i++){
@@ -108,7 +111,7 @@ public class Radix{
     }
     System.out.println();
   }*/
-  int[] data = {103,45,241,-861,359,-175,920,4};
+  int[] data = {-103,45,-241,861,359,-175,920,-4};
   radixsort(data);
 }
 
