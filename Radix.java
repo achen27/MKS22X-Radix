@@ -13,16 +13,24 @@ public class Radix{
 
     int place = 1;
     MyLinkedList<Integer>[] buckets = new MyLinkedList[20];
+    for (int i = 0; i < buckets.length; i++){
+      buckets[i] = new MyLinkedList();
+    }
     MyLinkedList<Integer> sorting = new MyLinkedList();
 
     while (largest % place != largest){
       System.out.println("Start Loop");
       if (place == 1){
         System.out.println("First Pass");
+        System.out.println("First Pass");
         for (int i = 0; i < data.length; i++){
+          System.out.println("Int: "+data[i]);
           if (data[i] >= 0){
+            System.out.println("Positive");
+            System.out.println(data[i]%10+10);
             buckets[data[i]%10+10].add(data[i]);
           } else {
+            System.out.println("Negative");
             buckets[9+data[i]%10].add(data[i]);
           }
         }
