@@ -34,18 +34,26 @@ public class Radix{
             buckets[9+data[i]%10].add(data[i]);
           }
         }
-        sorting = buckets[0];
-        for (int i = 1; i < buckets.length; i++){
+        for (int i = 0; i < buckets.length; i++){
           sorting.extend(buckets[i]);
         }
         System.out.println("First Pass: "+sorting.toString());
+        System.out.println("--------------------------------------");
       } else {
+        System.out.println("sorting: " +sorting.toString());
+        for (int i = 0; i < buckets.length; i++){
+          buckets[i].clear();
+        }
         while (sorting.size() != 0){
+          System.out.println("start other loop");
           int current = sorting.removeFront();
+          System.out.println(current);
+          System.out.println(current/place%10);
           if (current >= 0){
-            buckets[current*place*10%10+10].add(current);
+            buckets[current/place%10].add(current);
+            System.out.println(buckets[current/place%10].toString());
           } else {
-            buckets[9+current*place*10%10].add(current);
+            buckets[9+current/place%10].add(current);
           }
         }
         sorting = buckets[0];
@@ -53,6 +61,7 @@ public class Radix{
           sorting.extend(buckets[i]);
         }
         System.out.println("Other Pass: "+sorting.toString());
+        System.out.println("--------------------------------------");
       }
       place *=10;
     }
